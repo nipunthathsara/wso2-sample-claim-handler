@@ -19,7 +19,7 @@ package org.wso2.custom.claim;
 
 import org.wso2.carbon.identity.application.authentication.framework.config.model.StepConfig;
 import org.wso2.carbon.identity.application.authentication.framework.context.AuthenticationContext;
-import org.wso2.carbon.identity.application.authentication.framework.handler.claims.impl.*;
+import org.wso2.carbon.identity.application.authentication.framework.handler.claims.impl.DefaultClaimHandler;
 import org.wso2.carbon.identity.application.authentication.framework.exception.FrameworkException;
 import org.wso2.carbon.user.core.UserStoreException;
 import org.wso2.carbon.user.core.AuthorizationManager;
@@ -64,17 +64,17 @@ public class PermissionReceiver extends DefaultClaimHandler  {
 
         String userName = stepConfig.getAuthenticatedUser().getUserName();
         Map<String, String> requestedClaimMappings = context.getSequenceConfig().getApplicationConfig().getRequestedClaimMappings();
-        Map<String, String> claimMappings = super.handleClaimMappings(stepConfig,context,remoteClaims,isFederatedClaims);
+        Map<String, String> claimMappings = super.handleClaimMappings(stepConfig, context, remoteClaims, isFederatedClaims);
         try {
             AuthorizationManager authorizationManager =  PermissionReceiverComponent.getRealmService()
                                                             .getBootstrapRealm().getAuthorizationManager();
             // Get permission from the root for a user.
-            String [] permissionList = authorizationManager.getAllowedUIResourcesForUser(userName,"/");
+            String[] permissionList = authorizationManager.getAllowedUIResourcesForUser(userName, "/");
             String permissions = Arrays.toString(permissionList);
-            permissions = permissions.substring(1,permissions.length()-1);
-            for (String key : requestedClaimMappings.keySet() ) {
-                if("http://wso2.org/claims/permission".equals(key)) {
-                    claimMappings.put("permission",permissions);
+            permissions = permissions.substring(1, permissions.length() - 1);
+            for (String key : requestedClaimMappings.keySet()) {
+                if ("http://wso2.org/claims/permission".equals(key)) {
+                    claimMappings.put("permission", permissions);
                 }
             }
         } catch (UserStoreException e) {
