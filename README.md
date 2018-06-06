@@ -6,6 +6,6 @@
 3. Change <IS_HOME>/repository/conf/identity/application-authenticator.xml as below
 
    ```xml
-   <ClaimHandler>org.wso2.custom.claim.PermissionReceiver</ClaimHandler>
+   <ClaimHandler>org.wso2.custom.claim.ClaimHandler</ClaimHandler>
    ```
 4. Restart the server
