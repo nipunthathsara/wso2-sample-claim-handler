@@ -3,10 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.wso2.custom.claim</groupId>
-  <artifactId>org.wso2.permissionreceiver</artifactId>
+  <artifactId>org.wso2.sample.claimhandler</artifactId>
   <version>1.0</version>
   <packaging>bundle</packaging>
-  <name>org.wso2.sample.permissionreceiver</name>
+  <name>org.wso2.sample.claimHandler</name>
   <url>http://maven.apache.org</url>
 
     <build>
@@ -68,12 +68,12 @@
         <dependency>
             <groupId>org.wso2.carbon.identity.framework</groupId>
             <artifactId>org.wso2.carbon.identity.application.authentication.framework</artifactId>
-            <version>5.7.5</version>
+            <version>5.11.148</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.identity.framework</groupId>
             <artifactId>org.wso2.carbon.user.mgt</artifactId>
-            <version>5.7.5</version>
+            <version>5.11.148</version>
         </dependency>
     </dependencies>
 
